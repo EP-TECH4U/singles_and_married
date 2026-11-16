@@ -12,4 +12,6 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // When building on Netlify, target Netlify's runtime instead of the Cloudflare default.
+  ...(process.env.NETLIFY ? { nitro: { preset: "netlify" } } : {}),
 });
